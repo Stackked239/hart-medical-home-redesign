@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Package, Truck, CreditCard, Headphones } from "lucide-react";
-import heroMedical from "@/assets/hero-medical.jpg";
+import heroImage from "@/assets/doctor-portrait.jpg";
 
 const features = [
   { icon: Package, title: "60,000+ Products", description: "Comprehensive catalog of medical supplies from trusted manufacturers" },
@@ -17,8 +17,8 @@ const HeroSection = () => {
       {/* Background Image with Overlay */}
       <div className="absolute inset-0">
         <img
-          src={heroMedical}
-          alt="Hart Medical healthcare professional with medical supplies"
+          src={heroImage}
+          alt="Hart Medical healthcare professional"
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-foreground/95 via-foreground/80 to-foreground/40" />
