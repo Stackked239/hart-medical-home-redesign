@@ -9,6 +9,20 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { useCart } from "@/context/CartContext";
 import { sampleProducts, categories, vendors, Product } from "@/types/store";
+import diagnosticEquipment from "@/assets/diagnostic-equipment.jpg";
+import medicalSupplies from "@/assets/medical-supplies.jpg";
+import examRoom from "@/assets/exam-room.jpg";
+
+// Map categories to images
+const categoryImages: Record<string, string> = {
+  diagnostic: diagnosticEquipment,
+  "exam-room": examRoom,
+  instruments: medicalSupplies,
+  "needles-syringes": medicalSupplies,
+  "extended-care": examRoom,
+  pharmaceuticals: diagnosticEquipment,
+  "ppe-safety": medicalSupplies,
+};
 
 const Products = () => {
   const [searchParams, setSearchParams] = useSearchParams();
