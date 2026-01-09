@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Phone, Mail, MapPin, Facebook, Twitter, Linkedin } from "lucide-react";
-import hartLogo from "@/assets/hart-logo.svg";
+import brandIcon from "@/assets/brand-icon.svg";
 
 const Footer = () => {
   const productLinks = [
@@ -60,9 +60,7 @@ const Footer = () => {
           {/* Company Info */}
           <div className="lg:col-span-2">
             <div className="flex items-center gap-3 mb-4">
-              <div className="bg-primary rounded-lg p-2">
-                <span className="text-secondary font-heading font-bold text-lg">H</span>
-              </div>
+              <img src={brandIcon} alt="Hart Medical" className="h-12 w-12" />
               <div>
                 <span className="font-heading text-lg font-semibold text-foreground">Hart Medical</span>
                 <p className="text-foreground/60 text-xs">Essential Supplies. Exceptional Service.</p>
