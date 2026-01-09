@@ -70,7 +70,7 @@ const HeroSection = () => {
                 asChild
                 size="lg"
                 variant="outline"
-                className="rounded-lg px-8 py-6 text-base font-medium border-background/30 text-background hover:bg-background/10 transition-all duration-300"
+                className="rounded-lg px-8 py-6 text-base font-medium border-2 border-background text-background bg-transparent hover:bg-background hover:text-foreground transition-all duration-300"
               >
                 <Link to="/register">Open an Account</Link>
               </Button>
