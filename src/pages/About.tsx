@@ -1,8 +1,10 @@
 import { motion } from "framer-motion";
-import { Target, Heart, Users, Handshake, Award, TrendingUp, Building, Globe } from "lucide-react";
+import { Target, Heart, Users, Handshake, Award } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import PageHeader from "@/components/layout/PageHeader";
+import teamMeeting from "@/assets/team-meeting.jpg";
+import doctorPortrait from "@/assets/doctor-portrait.jpg";
 
 const stats = [
   { value: "35+", label: "Years of Experience" },
@@ -66,6 +68,24 @@ const About = () => {
         </div>
       </section>
 
+      {/* Team Image Section */}
+      <section className="py-0">
+        <div className="container-wide">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }} 
+            whileInView={{ opacity: 1, y: 0 }} 
+            viewport={{ once: true }}
+            className="rounded-2xl overflow-hidden"
+          >
+            <img 
+              src={teamMeeting} 
+              alt="Hart Medical team collaborating in a modern healthcare office" 
+              className="w-full h-80 object-cover"
+            />
+          </motion.div>
+        </div>
+      </section>
+
       {/* Values Section */}
       <section className="section-padding bg-secondary">
         <div className="container-wide text-center">
@@ -92,12 +112,39 @@ const About = () => {
           <p className="text-muted-foreground text-center mb-12">From a small family business to a nationwide medical supply partner</p>
           <div className="flex flex-wrap justify-center gap-4">
             {timeline.map((item, i) => (
-              <motion.div key={item.year} initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="bg-card rounded-xl p-6 w-full sm:w-48 text-center">
+              <motion.div key={item.year} initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="bg-card rounded-xl p-6 w-full sm:w-48 text-center shadow-hart-sm">
                 <p className="text-2xl font-heading font-semibold text-primary mb-1">{item.year}</p>
                 <p className="font-medium text-foreground mb-1">{item.title}</p>
                 <p className="text-xs text-muted-foreground">{item.description}</p>
               </motion.div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Doctor Quote Section */}
+      <section className="py-20 bg-secondary">
+        <div className="container-wide">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <motion.div 
+              initial={{ opacity: 0, x: -20 }} 
+              whileInView={{ opacity: 1, x: 0 }} 
+              viewport={{ once: true }}
+              className="rounded-2xl overflow-hidden"
+            >
+              <img 
+                src={doctorPortrait} 
+                alt="Healthcare professional" 
+                className="w-full h-96 object-cover"
+              />
+            </motion.div>
+            <motion.div initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
+              <blockquote className="text-2xl font-heading text-foreground italic mb-6">
+                "Hart Medical has been our trusted supplier for over 10 years. Their reliability and customer service are unmatched in the industry."
+              </blockquote>
+              <p className="font-medium text-foreground">Dr. Sarah Mitchell</p>
+              <p className="text-sm text-muted-foreground">Chief Medical Officer, Regional Health Partners</p>
+            </motion.div>
           </div>
         </div>
       </section>

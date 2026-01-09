@@ -1,27 +1,44 @@
 import { motion } from "framer-motion";
-import { Stethoscope, Shirt, Wrench, Building2 } from "lucide-react";
+import { Stethoscope, Shirt, Wrench, Building2, ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 import HeartbeatIcon from "./HeartbeatIcon";
+import diagnosticEquipment from "@/assets/diagnostic-equipment.jpg";
+import examRoom from "@/assets/exam-room.jpg";
+import medicalSupplies from "@/assets/medical-supplies.jpg";
+import heroWarehouse from "@/assets/hero-warehouse.jpg";
 
 const offerings = [
   {
     icon: Stethoscope,
     title: "Diagnostic Equipment",
-    description: "Accurate, dependable tools for everyday use",
+    count: "2,500+",
+    description: "Stethoscopes, BP monitors, and diagnostic tools",
+    image: diagnosticEquipment,
+    category: "diagnostic",
   },
   {
     icon: Shirt,
     title: "Exam Room Supplies",
-    description: "From gloves to gowns, ready when you are",
+    count: "8,000+",
+    description: "Tables, paper, gowns, and exam essentials",
+    image: examRoom,
+    category: "exam-room",
   },
   {
     icon: Wrench,
     title: "Medical Instruments",
-    description: "Trusted brands, durable builds, professional grade",
+    count: "5,000+",
+    description: "Surgical instruments and precision tools",
+    image: medicalSupplies,
+    category: "instruments",
   },
   {
     icon: Building2,
-    title: "Physician Office Essentials",
-    description: "Stock your space with confidence",
+    title: "Needles & Syringes",
+    count: "3,000+",
+    description: "Hypodermic needles and injection supplies",
+    image: heroWarehouse,
+    category: "needles-syringes",
   },
 ];
 
@@ -31,15 +48,15 @@ const WhatWeOfferSection = () => {
       <div className="container-wide">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <motion.div
+          <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="flex justify-center mb-6"
+            className="text-primary uppercase tracking-[0.2em] text-sm font-medium mb-4"
           >
-            <HeartbeatIcon className="w-24 h-10 text-primary" />
-          </motion.div>
+            What We Offer
+          </motion.p>
 
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
@@ -48,7 +65,7 @@ const WhatWeOfferSection = () => {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="font-heading text-3xl md:text-4xl lg:text-5xl font-medium text-foreground mb-4"
           >
-            What We Offer
+            Medical Supplies That Work As Hard As You Do
           </motion.h2>
 
           <motion.p
@@ -56,9 +73,9 @@ const WhatWeOfferSection = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-muted-foreground uppercase tracking-[0.2em] text-sm font-medium"
+            className="text-muted-foreground max-w-2xl mx-auto"
           >
-            Medical supplies that work as hard as you do
+            We offer an expansive selection of high-quality products to meet the needs of modern care facilities
           </motion.p>
         </div>
 
@@ -71,20 +88,59 @@ const WhatWeOfferSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="card-elevated p-8 text-center group cursor-pointer"
             >
-              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-secondary mb-6 group-hover:bg-primary/10 transition-colors duration-300">
-                <offering.icon className="w-7 h-7 text-primary" />
-              </div>
-              <h3 className="font-heading text-xl font-medium text-foreground mb-3">
-                {offering.title}
-              </h3>
-              <p className="text-muted-foreground text-sm leading-relaxed">
-                {offering.description}
-              </p>
+              <Link
+                to={`/products?category=${offering.category}`}
+                className="block card-elevated overflow-hidden group cursor-pointer h-full"
+              >
+                <div className="h-48 overflow-hidden relative">
+                  <img 
+                    src={offering.image} 
+                    alt={offering.title} 
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 to-transparent" />
+                  <div className="absolute bottom-4 left-4 right-4">
+                    <span className="bg-primary text-primary-foreground text-xs font-medium px-2 py-1 rounded">
+                      {offering.count}
+                    </span>
+                  </div>
+                </div>
+                <div className="p-6">
+                  <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-secondary mb-4 group-hover:bg-primary/10 transition-colors duration-300">
+                    <offering.icon className="w-6 h-6 text-primary" />
+                  </div>
+                  <h3 className="font-heading text-xl font-medium text-foreground mb-2">
+                    {offering.title}
+                  </h3>
+                  <p className="text-muted-foreground text-sm leading-relaxed mb-4">
+                    {offering.description}
+                  </p>
+                  <span className="text-primary text-sm font-medium flex items-center gap-1 group-hover:gap-2 transition-all">
+                    Shop Now <ArrowRight className="w-4 h-4" />
+                  </span>
+                </div>
+              </Link>
             </motion.div>
           ))}
         </div>
+
+        {/* View All Button */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.5 }}
+          className="text-center mt-12"
+        >
+          <Link
+            to="/products"
+            className="inline-flex items-center gap-2 px-8 py-3 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90 transition-colors"
+          >
+            View All Products
+            <ArrowRight className="w-4 h-4" />
+          </Link>
+        </motion.div>
       </div>
     </section>
   );
